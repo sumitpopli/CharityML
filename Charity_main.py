@@ -296,7 +296,7 @@ def model_performance_metrics(modelname, y_true, y_pred):
     plt.plot([0, 0], [1, 0], c=".7"), plt.plot([1, 1], c=".7")
     plt.ylabel('True Positive Rate')
     plt.xlabel('False Positive Rate')
-    #plt.show()
+    plt.show()
 
 
 #Main function: Load the CSV file
@@ -344,19 +344,22 @@ if __name__ == "__main__":
     test_result_index_col = test_result_index_col.reshape(-1, 1)
 
     dtc_income_data = donation_dtc(X_train, y_train, processed_X_test)
-    dtc_income_data = dtc_income_data.reshape(-1,1)
-    dtc_test_score = np.append(test_result_index_col, dtc_income_data,axis=1)
-
+    dtc_income_data = dtc_income_data.reshape(-1, 1)
+    dtc_test_score = np.append(test_result_index_col, dtc_income_data, axis=1)
+    np.savetxt('dtc_results.csv', dtc_test_score, delimiter=',')
 
     rfc_income_data = donation_rfc(X_train, y_train, processed_X_test)
     rfc_income_data = rfc_income_data.reshape(-1, 1)
     rfc_test_score = np.append(test_result_index_col, rfc_income_data, axis=1)
+    np.savetxt('rfc_results.csv', rfc_test_score, delimiter=',')
 
     svc_income_data = donation_svc(X_train, y_train, processed_X_test)
-    svc_income_data = svc_income_data.reshape(-1,1)
+    svc_income_data = svc_income_data.reshape(-1, 1)
     svc_test_score = np.append(test_result_index_col, svc_income_data, axis=1)
+    np.savetxt('svc_results.csv', svc_test_score, delimiter=',')
 
     abc_income_data = donation_abc(X_train, y_train, processed_X_test)
     abc_income_data = abc_income_data.reshape(-1, 1)
     abc_test_score = np.append(test_result_index_col, abc_income_data, axis=1)
+    np.savetxt('abc_results.csv', abc_test_score, delimiter=',')
 
