@@ -30,7 +30,7 @@ The following python packages reqd to run this project:
 3. Matplotlib
 4. Python 3.0
 
-# Usage: #
+## Usage: ##
 
 After the environment set up, download the following files:
 1. Census.csv
