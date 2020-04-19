@@ -21,7 +21,10 @@ def distribution(data, transformed = False):
 
     fig, axs = pl.subplots(2, 1, figsize=(20, 20))
     for i, feature in enumerate(['capital-gain', 'capital-loss']):
-        axs[i].set_title('{} Feature distribution'.format(feature))
+        if(transformed == True):
+            axs[i].set_title('{} Transformed Feature distribution'.format(feature))
+        else:
+            axs[i].set_title('{} Feature distribution'.format(feature))
         axs[i].hist(data[feature], bins=25, color='#00A0A0')
         axs[i].set_xlabel("Value")
         axs[i].set_ylabel("Number of Records")
@@ -30,10 +33,7 @@ def distribution(data, transformed = False):
         axs[i].set_yticklabels([0, 500, 1000, 1500, ">2000"])
 
 
-    if transformed:
-        fig.suptitle("Log-transformed Distributions of Continuous Census Data Features",fontsize = 16, y = 1.03)
-    else:
-        fig.suptitle("Skewed Distributions of Continuous Census Data Features", fontsize = 16, y = 1.03)
+
     pl.show()
 
 
